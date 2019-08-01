@@ -1,0 +1,28 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= @cocktail.image_url %>">
+  <div class="container">
+    <h1>Learn how to make <%= @cocktail.name %></h1>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>What you will need:</h2>
+      <% @ingredients.each do |dose| %>
+        <li>
+          <strong><%= dose.ingredient.name %></strong>
+          <%= dose.description %>
+          <%= link_to "Delete", dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } %>
+        </li>
+      <% end %>
+     </div>
+    <div class="col">
+      <h2>Add an ingredient for <%= @cocktail.name %></h2>
+      <%= simple_form_for([@cocktail, @dose]) do |f| %>
+        <%= f.association :ingredient, class: 'select2'%>
+        <%= f.input :description %>
+        <%= f.submit "Add this ingredient", class: "btn btn-flat" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

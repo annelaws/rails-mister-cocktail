@@ -15,6 +15,7 @@ ingredients = JSON.parse(open(url).read)
 
 puts 'Cleaning database...'
 Ingredient.destroy_all
+Cocktail.destroy_all
 
 puts 'Creating Ingredients...'
 
