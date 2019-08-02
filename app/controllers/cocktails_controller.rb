@@ -15,6 +15,9 @@ class CocktailsController < ApplicationController
 
   def create
     @cocktail = Cocktail.new(cocktails_params)
+    if params["cocktail"]["remote_photo_url"].present?
+      @cocktail.remote_photo_url = params["cocktail"]["remote_photo_url"]
+    end
     if @cocktail.save
       redirect_to cocktails_path
     else
@@ -23,6 +26,6 @@ class CocktailsController < ApplicationController
   end
 
   def cocktails_params
-    params.require(:cocktail).permit(:name, :image_url)
+    params.require(:cocktail).permit(:name, :photo)
   end
 end

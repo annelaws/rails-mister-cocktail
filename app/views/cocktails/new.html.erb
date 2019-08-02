@@ -2,7 +2,10 @@
 <h1>Add a new cocktail</h1>
 <%= simple_form_for(@cocktail) do |f| %>
   <%= f.input :name %>
-  <%= f.input :image_url %>
+  <label class="form-control-label string required" for="cocktail_name">Insert a URL here</label>-
+  <%= f.text_field :remote_photo_url, class: "form-control string required"%>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
   <%= f.submit "Add a cocktail", class: "btn btn-primary" %>
 <% end %>
 </div>
