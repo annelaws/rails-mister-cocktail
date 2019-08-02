@@ -9,7 +9,11 @@
 
 <div class="container">
   <hr>
+  <% if @ingredient.present? %>
+   <h2>Our favourite Cocktail recipes with <%= @ingredient.name %></h2>
+  <% else %>
   <h2>Our favourite Cocktail recipes</h2>
+  <% end %>
   <hr>
 <div class="cards">
 

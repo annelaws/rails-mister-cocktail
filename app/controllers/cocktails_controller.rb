@@ -1,6 +1,18 @@
 class CocktailsController < ApplicationController
   def index
-    @cocktails = Cocktail.all
+    if params[:search].nil?
+      @cocktails = Cocktail.all
+    else
+      @ingredient = Ingredient.find_by(name: params[:search][:ingredient].capitalize)
+      @cocktails = []
+      Cocktail.all.each do |cocktail|
+        cocktail.ingredients.each do |ingredient|
+          if ingredient == @ingredient
+            @cocktails << cocktail
+          end
+        end
+      end
+    end
   end
 
   def show

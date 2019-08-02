@@ -18,7 +18,7 @@
     <div class="col">
       <h2>Add an ingredient for <%= @cocktail.name %></h2>
       <%= simple_form_for([@cocktail, @dose]) do |f| %>
-        <%= f.association :ingredient, class: 'select2'%>
+        <%= f.association :ingredient, input_html: { class: 'select2'} %>
         <%= f.input :description %>
         <%= f.submit "Add this ingredient", class: "btn btn-flat" %>
       <% end %>
